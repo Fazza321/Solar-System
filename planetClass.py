@@ -5,8 +5,8 @@ size = (1920, 1080)
 
 class Planet:
   def __init__(self, name, radius, colour, speed, distance, mass, angle, orbitcentrex, orbitcentrey):
-    self.x = None
     self.y = None
+    self.x = None
     self._name = name
     self._radius = radius
     self._colour = colour
@@ -28,9 +28,27 @@ class Planet:
     self.x = xChange + self._centreX
     self.y = yChange + self._centreY
 
-  def updateSpeed(*planets):
-    planets._speed += (0.2*(planets._speed))
+  def getx(self):
+    return (math.sin(self._angle)*self._distance) + self._centreX
 
+  def gety(self):
+    return (math.cos(self._angle)*self._distance) + self._centreX
+
+  def speedUp(*planets):
+    for planet in planets:
+      planet._speed += (0.2*(planet._speed))
+
+  def slowDown(*planets):
+    for planet in planets:
+      planet._speed -= (0.2*planet._speed)
+
+  def stop(*planets):
+    for planet in planets:
+      planet._speed -= planet._speed
+
+  def go(*planets):
+    for planet in planets:
+      planet._speed += planet._speed
 
 SunColour = (230, 230, 0)
 MercuryColour = (131, 134, 139)
