@@ -1,0 +1,1 @@
+This is my solar system, I'm trying to figure out how to increase the speed of all the planets without having a seperate line for each one, I tried using *args to pass in all the planets using a method. However it can't update the speed of the planets because it is a tuple.
