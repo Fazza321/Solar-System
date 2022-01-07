@@ -1,4 +1,5 @@
 import random
+import os
 
 from pygame import mixer
 
@@ -13,10 +14,10 @@ red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
 size = (1920, 1080)
-click = mixer.Sound("buttonclick.wav")
-Font = pygame.font.Font("Dosis-ExtraLight.ttf", 45)
-TitleFont = pygame.font.Font("Dosis-ExtraLight.ttf", 80)
-Background = pygame.image.load("Stars.jpg")
+click = mixer.Sound(os.path.join("static", "buttonclick.wav"))
+Font = pygame.font.Font(os.path.join("static", "Dosis-ExtraLight.ttf"), 45)
+TitleFont = pygame.font.Font(os.path.join("static", "Dosis-ExtraLight.ttf"), 80)
+Background = pygame.image.load(os.path.join("static", "Stars.jpg"))
 Background = pygame.transform.scale(Background, size)
 
 
@@ -188,3 +189,4 @@ def Menu():
 
 
 Menu()
+
