@@ -98,129 +98,17 @@ def Play():
     SolarSystem = pygame.display.set_mode(size)
 
     Sun = Planet("Sun", 50, SunColour, 0, 0, 0, 0, None, (size[0] / 2, size[1] / 2))
-    Mercury = Planet(
-        "Mercury",
-        4,
-        MercuryColour,
-        0.00477,
-        70,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Venus = Planet(
-        "Venus",
-        5.5,
-        VenusColour,
-        0.00354,
-        125,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Earth = Planet(
-        "Earth",
-        6,
-        EarthColour,
-        0.003,
-        180,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Moon = Planet(
-        "Moon",
-        2,
-        VenusColour,
-        0.015,
-        20,
-        0,
-        random.uniform(0, 6.2832),
-        Earth,
-        (size[0] / 2, size[1] / 2),
-    )
-    Mars = Planet(
-        "Mars",
-        4,
-        MarsColour,
-        0.002424,
-        235,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Jupiter = Planet(
-        "Jupiter",
-        17,
-        JupiterColour,
-        0.001317,
-        290,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Saturn = Planet(
-        "Saturn",
-        12,
-        SaturnColour,
-        0.000975,
-        345,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Uranus = Planet(
-        "Uranus",
-        10,
-        UranusColour,
-        0.000684,
-        400,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Neptune = Planet(
-        "Neptune",
-        10,
-        NeptuneColour,
-        0.000546,
-        455,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Pluto = Planet(
-        "Pluto",
-        4,
-        PlutoColour,
-        0.000471,
-        510,
-        0,
-        random.uniform(0, 6.2832),
-        Sun,
-        (size[0] / 2, size[1] / 2),
-    )
-    Planets = [
-        Sun,
-        Mercury,
-        Venus,
-        Earth,
-        Mars,
-        Jupiter,
-        Saturn,
-        Uranus,
-        Neptune,
-        Pluto,
-        Moon,
-    ]
+    Mercury = Planet("Mercury", 4, MercuryColour, 0.00477, 70, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Venus = Planet( "Venus", 5.5, VenusColour, 0.00354, 125, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Earth = Planet( "Earth", 6, EarthColour, 0.003, 180, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Moon = Planet( "Moon", 2, VenusColour, 0.015, 20, 0, random.uniform(0, 6.2832), Earth, (size[0] / 2, size[1] / 2))
+    Mars = Planet( "Mars", 4, MarsColour, 0.002424, 235, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Jupiter = Planet( "Jupiter", 17, JupiterColour, 0.001317, 290, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Saturn = Planet( "Saturn", 12, SaturnColour, 0.000975, 345, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Uranus = Planet( "Uranus", 10, UranusColour, 0.000684, 400, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Neptune = Planet( "Neptune", 10, NeptuneColour, 0.000546, 455, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Pluto = Planet( "Pluto", 4, PlutoColour, 0.000471, 510, 0, random.uniform(0, 6.2832), Sun, (size[0] / 2, size[1] / 2))
+    Planets = [Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Moon]
 
     SolarSystemText = Button("The Solar System", 50, 30, TitleFont)
     MenuText = Button("Menu", 50, 200, Font)
@@ -237,18 +125,6 @@ def Play():
         SpeedDownText.write(SolarSystem, white)
         MenuText.write(SolarSystem, white)
         StopText.write(SolarSystem, white)
-
-        Sun.render(SolarSystem)
-        Mercury.render(SolarSystem)
-        Venus.render(SolarSystem)
-        Earth.render(SolarSystem)
-        Moon.render(SolarSystem)
-        Mars.render(SolarSystem)
-        Jupiter.render(SolarSystem)
-        Saturn.render(SolarSystem)
-        Uranus.render(SolarSystem)
-        Neptune.render(SolarSystem)
-        Pluto.render(SolarSystem)
 
         for event in pygame.event.get():
             if event.type == pygame.quit:
@@ -292,6 +168,7 @@ def Play():
                 pygame.quit()
 
         for planet in Planets:
+            planet.render(SolarSystem)
             xa = Planet.centre_xa(planet)
             ya = Planet.centre_ya(planet)
             if xa - 60 < mx < xa + 60 and ya - 60 < my < ya + 60:
@@ -347,18 +224,13 @@ def FactsPage(Text1, Text2, Text3, Text4, Text5, Text6, TitleText, planetImage, 
     Info4 = Button(Text4, 500, 480, Font)
     Info5 = Button(Text5, 500, 630, Font)
     Info6 = Button(Text6, 500, 780, Font)
+    buttons = [Info1, Info2, Info3, Info4, Info5, Info6, MenuText, TitleText]
     while not done:
         screen.blit(Background, [0, 0])
         screen.blit(planetImage, [x, y])
         mx, my = pygame.mouse.get_pos()
-        TitleText.write(screen, white)
-        MenuText.write(screen, white)
-        Info1.write(screen, white)
-        Info2.write(screen, white)
-        Info3.write(screen, white)
-        Info4.write(screen, white)
-        Info5.write(screen, white)
-        Info6.write(screen, white)
+        for button in buttons:
+            button.write(screen, white)
         ButtonDown = False
 
         for event in pygame.event.get():
